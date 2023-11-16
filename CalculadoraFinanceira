@@ -1,0 +1,109 @@
+import java.util.Scanner;
+
+public class Calculadora {
+        public static void main(String[] args) throws Exception {
+        telaInicio();
+    }
+
+    public static void clearScreen(){
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
+    public static void telaInicio(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("===============================");
+        System.out.println("   ");
+        System.out.println("    CALCULADORA FINANCEIRA     ");
+        System.out.println("   ");
+        System.out.println("Calcular:");
+        System.out.println("   ");
+        System.out.println("1- Juros compostos     ");
+        System.out.println("2- 13°    ");
+        System.out.println("3- FGTS    ");
+        System.out.println("3- Hora de Trabalho    ");
+        int op=sc.nextInt();
+        System.out.println("===============================");
+        System.out.println(" ");
+        
+        switch (op) {
+            case 1:
+            telaJC();
+            break;
+            case 2:
+            //tela13();
+            break;
+            case 3:
+           // telaFGTS();
+            break;
+            case 4:
+            //telaHT();
+            break;
+        
+            default:
+                clearScreen();
+            System.out.println("Opção Inválida!!");
+                telaInicio();
+                break;
+        }
+     sc.close();   
+    }
+
+
+    public static void telaJC(){    
+        Scanner jc = new Scanner(System.in);
+        System.out.println("CALCULO DE JUROS COMPOSTOS");   
+        System.out.println(" ");
+        System.out.println("Qual valor foi dado de entrada: ");
+        System.out.print("R$");
+        System.out.println(" ");
+        int ent=jc.nextInt();
+        System.out.println("Informe o valor a ser investido mensalmente: ");
+        System.out.print("R$");
+        System.out.println(" ");
+        int val=jc.nextInt();
+        System.out.print("Qual a quantidade de meses irá investir: ");
+        int mes=jc.nextInt();
+        System.out.println(" ");
+        System.out.println(" ");
+        
+        System.out.println("1- Calcular pela taxa mensal");
+        System.out.println("ou");
+        System.out.println("2- Calcular pela taxa anual");
+        int op=jc.nextInt();
+        switch (op) {
+            case 1:
+                jurosmensal(ent, val, mes);
+                break;
+            case 2:
+                jurosanual(ent, val, mes);
+                break;
+        
+            default:
+                break;
+        }
+
+
+        jc.close();
+    }
+
+    public static void jurosmensal(int ent,int val,int mes){
+        Scanner jr = new Scanner(System.in);
+        System.out.println("Informe a taxa de juros mensal(1,04% - Padrão)");
+        double tx=jr.nextDouble();
+
+        
+        jr.close();
+    }
+
+    public static void jurosanual(int ent,int val,int mes){
+        Scanner jr = new Scanner(System.in);
+        System.out.println("Informe a taxa de juros anual(12,5% - Padrão)");
+        double tx=jr.nextDouble();
+
+
+    jr.close();
+    }
+
+}
